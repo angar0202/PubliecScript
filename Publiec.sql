@@ -213,6 +213,19 @@ CREATE TABLE IF NOT EXISTS `negocio`.`PublicacionImagen` (
   INDEX `fk_PublicacionImagen_NegocioPublicacion1_idx` (`NegocioPublicacionID` ASC))
 ENGINE = InnoDB;
 
+CREATE TABLE `validacion` (
+  `ValidacionID` int(11) NOT NULL AUTO_INCREMENT,
+  `UsuarioID` varchar(13) NOT NULL,
+  `FechaCreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CodigoSecreto` varchar(48) NOT NULL,
+  `Tipo` varchar(25) NOT NULL,
+  `FechaModificacion` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `Estado` tinyint(1) NOT NULL DEFAULT '1',
+  `Valores` varchar(50) NOT NULL,
+  PRIMARY KEY (`ValidacionID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+ALTER TABLE usuario ADD Activo tinyint(4);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
